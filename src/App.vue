@@ -6,7 +6,7 @@
 
 <style lang="scss">
 	#app {
-		background-color: blueviolet;
+		background-image: linear-gradient(30deg,#00a4ff 20%, skyblue  60%, #ccc 80%,red);
 	}
 
 	.bg-shadow { 

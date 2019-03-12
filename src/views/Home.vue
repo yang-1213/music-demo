@@ -1,30 +1,38 @@
 <template>
 	<div class="home">
-		<van-tabs v-model="active">
-			<van-tab title="标签 1">内容 1</van-tab>
-			<van-tab title="标签 2">内容 2</van-tab>
-			<van-tab title="标签 3">内容 3</van-tab>
-			<van-tab title="标签 4">内容 4</van-tab>
+		<!-- 导航栏 -->
+		<van-tabs v-model="active" swipeable>
+			<van-tab
+			v-for="(imageUrl,index) in ['https://m.360buyimg.com/babel/jfs/t1/24061/35/10379/42739/5c8658dbE3f123849/6f6b44e2c5a3c82f.jpg',
+				'https://img1.360buyimg.com/pop/jfs/t1/17005/27/9781/159975/5c81df7aE799c58d2/cc7fb12b2a826481.jpg',
+				'https://m.360buyimg.com/babel/jfs/t1/31931/5/4952/99171/5c8216d7Eadd63188/b78ab41bb0b10179.jpg',
+				'https://imgcps.jd.com/ling/1612939/5pe25bCa55S35YyF54m55oOg/6aKG5Yi45LqrOOaKmA/t-5bda9e0c29b6591f551ce19b/79e88a80.jpg'
+				]"
+				 :title="'选项 ' + index"
+				 :key="index"
+				 >
+				内容 {{ index }}
+			</van-tab>
 		</van-tabs>
 	</div>
 </template>
 
 <script>
 	// @ is an alias to /src
-
+	import Nav from '@/components/Nav.vue'
 	export default {
 		name: 'home',
 		components: {
-
+			Nav
 		},
 		data() {
 			return {
-				active: 2
+				active:0
 			}
 		},
 		methods: {
-			bindChecked(el) {
-
+			changeCurrent(index) {
+				console.log(index);
 			}
 		}
 	}
@@ -33,52 +41,12 @@
 
 <style scoped lang='scss'>
 	.home {
-		background-color: lightskyblue;
 		font-size: 30px;
 
-		.radio {
-			width: 50%;
-			height: 50px;
-			display: flex;
-			padding: 30px;
-
-			.radius {
-				position: relative;
-				width: 30px;
-				height: 30px;
-				background-color: #00a4ff;
-				border-radius: 50%;
-
-				&::before {
-					content: "";
-					position: absolute;
-					display: block;
-					width: 60%;
-					height: 60%;
-					background-color: red;
-					top: 0;
-					left: 0;
-					right: 0;
-					bottom: 0;
-					margin: auto;
-					border-radius: 50%;
-				}
-
-				&[checked] {
-					background-color: yellow;
-				}
-
-				input[type=radio] {
-					width: 30px;
-					height: 30px;
-					opacity: .1;
-				}
-
-				input[checked] {
-					background-color: red;
-				}
-			}
-
+		.banner {
+			display: block;
+			width: 100%;
+			height: 300px;
 		}
 	}
 </style>

@@ -2,6 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router/index.js'
 import store from './store/index.js'
+// 重置样式
+import '@/style/reset.css'
 // 引入fundebug
 import * as fundebug from "fundebug-javascript";
 import fundebugVue from "fundebug-vue";

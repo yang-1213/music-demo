@@ -8,6 +8,7 @@
     "test:e2e": "vue-cli-service test:e2e"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "fundebug-javascript": "^1.7.0",
     "fundebug-vue": "0.0.1",
     "vant": "^1.6.9",
