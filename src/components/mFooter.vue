@@ -3,7 +3,8 @@
 		<footer class="footer">
 			<!-- 歌曲信息 -->
 			<div class="music">
-				<img src="https://img11.360buyimg.com/mobilecms/s140x140_jfs/t1/20359/26/6288/298629/5c4e66b3E5c215c84/086a9f7565f3e98e.jpg!q90.webp" alt="">
+				<img src="https://img11.360buyimg.com/mobilecms/s140x140_jfs/t1/20359/26/6288/298629/5c4e66b3E5c215c84/086a9f7565f3e98e.jpg!q90.webp"
+				 alt="">
 				<div class="music-info">
 					<div class="music-title">
 						{{music.title}}
@@ -17,56 +18,78 @@
 			<div class="music-play">
 				<!-- 暂停 icon-zanting1 -->
 				<!-- 播放 icon-bofang1 -->
-				<i class="iconfont icon-zanting1" :class="isPlay?'icon-bofang1':'icon-zanting1'" v-tap={methods:bindPlay}></i>
+				<i class="iconfont" :class="isPlay?'icon-bofang1':'icon-zanting1'" v-tap={methods:bindPlay,isPlay:isPlay}>
+				</i>
 				<i class="iconfont icon-category"></i>
 			</div>
+
+			<!-- 弹出层 -->
+			<van-popup 
+			v-model="show"
+			position="bottom" 
+			:overlay="true"
+			
+			>
+				内容
+			</van-popup>
 		</footer>
 	</div>
 </template>
 
 <script>
 	// 邮箱登陆接口
-	import {login,search} from "@/api/index.js"
+	import {
+		login,
+		search
+	} from "@/api/index.js"
 	export default {
-		props:{
+		props: {
 			// 是否播放
-			isPlay:{
-				type:Boolean,
-				default:false
+			isPlay: {
+				type: Boolean,
+				default: false
+			},
+			// 是否显示歌曲列表
+			show:{
+				type: Boolean,
+				default: false
 			}
 		},
-		data(){
+		data() {
 			return {
-				music:{
-					author:'周杰伦',
-					title:'夜的第七章！'
+				music: {
+					author: '周杰伦',
+					title: '夜的第七章！'
 				}
 			}
 		},
-		created(){
-// 			login('gy148485@163.com',"mbsky148485")
-// 				.then(res=>{
-// 					console.log(res);
-// 				})
-				
-				search('周杰伦').then(res=>{
-					console.log(res);
-				})
-		// this.$emit(this.bindPlay,1);
+		created() {
+			// 			login('gy148485@163.com',"mbsky148485")
+			// 				.then(res=>{
+			// 					console.log(res);
+			// 				})
+
+			// 搜索接口
+			// 				search('周杰伦').then(res=>{
+			// 					if(res.code===200){
+			// 						// 成功
+			// 						console.log(res);
+			// 					}
+			// 				})
+			// this.$emit(this.bindPlay,1);
 		},
-		methods:{
+		methods: {
 			// 点击播放 点击暂停
-			bindPlay(){
+			bindPlay(obj) {
 				// 改变图标
-				// this.isPlay = !this.isPlay;
-				this.$emit('bindPlay');
+				this.$emit('changPlay', obj.isPlay);
 			}
 		}
 	}
 </script>
-
+e
 <style lang="scss" scoped>
-	.footer{
+	.footer {
 		position: fixed;
 		bottom: 0;
 		width: 100%;
@@ -74,37 +97,44 @@
 		background-color: #00a4ff;
 		padding: 6px;
 		display: flex;
-		.music{
+
+		.music {
 			width: 76%;
 			display: flex;
-			img{
+
+			img {
 				width: 38px;
 				height: 38px;
 				border-radius: 5px;
 			}
-			.music-info{
+
+			.music-info {
 				margin: 3px 0 3px 3px;
-				.music-title{
+
+				.music-title {
 					color: #fff;
-					height:18px; 
-					font-size:16px;
+					height: 18px;
+					font-size: 16px;
 					line-height: 18px;
 				}
-				.music-author{
+
+				.music-author {
 					font-size: 12px;
-					color:#ccc;
+					color: #ccc;
 					height: 12px;
 					line-height: 12px;
 				}
 			}
 		}
-		.music-play{
+
+		.music-play {
 			flex: 1;
 			line-height: 38px;
 			display: flex;
-			justify-content:space-around;
-			>.iconfont{
-				font-size:30px;
+			justify-content: space-around;
+
+			>.iconfont {
+				font-size: 30px;
 			}
 		}
 	}

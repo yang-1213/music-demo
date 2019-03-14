@@ -18,12 +18,12 @@ axios.interceptors.request.use(function (config) {
     return Promise.reject(error);
   });
 // 
-// // 添加响应拦截器
+// 添加响应拦截器
 // axios.interceptors.response.use(function (response) {
 //     // 对响应数据做点什么
 //     return response;
 //   }, function (error) {
-//     // 对响应错误做点什么
+//   对响应错误做点什么
 //     return Promise.reject(error);
 //   });
 
@@ -43,6 +43,7 @@ export let login = (email,password) =>reqGet('/login',{email,password});
 export let user_playlist = (uid)=>reqGet('/user/playlist',{uid});
 
 // 搜索接口
+// 必选参数 : keywords : 关键词
 // 可选参数 : limit : 返回数量 , 默认为 30 offset : 偏移数量，用于分页 , 如 : 如 :( 页数 -1)*30, 其中 30 为 limit 的值 , 默认为 0
 // type: 搜索类型；默认为 1 即单曲 , 取值意义 : 1: 单曲, 10: 专辑, 100: 歌手, 1000: 歌单, 1002: 用户, 1004: MV, 1006: 歌词, 1009: 电台, 1014: 视频
 export let search = (keywords,limit=30,type=1)=>reqGet('/search',{keywords,limit,type})

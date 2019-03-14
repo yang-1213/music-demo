@@ -28,11 +28,11 @@
 		</div>
 
 		<!-- 底部音乐栏 -->
-		<m-footer :isPlay="is_paly" @bindPlay="bindPlay">
+		<m-footer :isPlay="is_paly" @changPlay="bindPlay">
 
 		</m-footer>
 	</div>
-</template>
+</template>e
 
 <script>
 	// @ is an alias to /src
@@ -63,9 +63,10 @@
 				console.log(index);
 			},
 			// 点击播放 点击暂停
-			bindPlay(){
+			bindPlay(isplay){
 				// 改变图标
-				this.is_paly = !this.is_paly;
+				this.is_paly = !isplay;
+				console.log(this.is_paly)
 			}
 		}
 	}
