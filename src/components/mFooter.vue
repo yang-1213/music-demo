@@ -17,7 +17,7 @@
 			<div class="music-play">
 				<!-- 暂停 icon-zanting1 -->
 				<!-- 播放 icon-bofang1 -->
-				<i class="iconfont icon-zanting1" :class="isPlay?'icon-bofang1':'icon-zanting1'" @tap="bindPlay"></i>
+				<i class="iconfont icon-zanting1" :class="isPlay?'icon-bofang1':'icon-zanting1'" v-tap={methods:bindPlay}></i>
 				<i class="iconfont icon-category"></i>
 			</div>
 		</footer>
@@ -25,7 +25,8 @@
 </template>
 
 <script>
-	import {phoneLogin} from "@/api/index.js"
+	// 邮箱登陆接口
+	import {login,search} from "@/api/index.js"
 	export default {
 		props:{
 			// 是否播放
@@ -43,16 +44,22 @@
 			}
 		},
 		created(){
-			phoneLogin(15581085097,"mbsky148485")
-				.then(res=>{
+// 			login('gy148485@163.com',"mbsky148485")
+// 				.then(res=>{
+// 					console.log(res);
+// 				})
+				
+				search('周杰伦').then(res=>{
 					console.log(res);
 				})
+		// this.$emit(this.bindPlay,1);
 		},
 		methods:{
 			// 点击播放 点击暂停
 			bindPlay(){
 				// 改变图标
-				this.isPlay = !this.isPlay;
+				// this.isPlay = !this.isPlay;
+				this.$emit('bindPlay');
 			}
 		}
 	}

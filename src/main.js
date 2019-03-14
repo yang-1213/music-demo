@@ -2,6 +2,10 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router/index.js'
 import store from './store/index.js'
+
+// tap移动端点击事件
+import vueTap from 'v-ztap';
+Vue.use(vueTap);
 // 重置样式
 import '@/style/reset.css'
 // 引入fundebug

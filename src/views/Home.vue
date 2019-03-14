@@ -19,10 +19,17 @@
 			</div>
 		</van-tabbar>
 		<!-- tab栏结束 -->
-		
+
+		<!-- loading简单示例 -->
+		<div class="loading" @click="log({istrue:isPlay})">
+			<div v-for='index in 5' class="round" :key="index">
+
+			</div>
+		</div>
+
 		<!-- 底部音乐栏 -->
-		<m-footer :isPlay="isPlay">
-			
+		<m-footer :isPlay="is_paly" @bindPlay="bindPlay">
+
 		</m-footer>
 	</div>
 </template>
@@ -48,12 +55,17 @@
 					'https://imgcps.jd.com/ling/1612939/5pe25bCa55S35YyF54m55oOg/6aKG5Yi45LqrOOaKmA/t-5bda9e0c29b6591f551ce19b/79e88a80.jpg'
 				],
 				// 是否播放
-				isPlay:true
+				is_paly: false
 			}
 		},
 		methods: {
 			changeCurrent(index) {
 				console.log(index);
+			},
+			// 点击播放 点击暂停
+			bindPlay(){
+				// 改变图标
+				this.is_paly = !this.is_paly;
 			}
 		}
 	}
@@ -77,21 +89,79 @@
 			background: -o-linear-gradient(0deg, rgb(166, 199, 255) 0%, rgb(192, 255, 255) 100%);
 			background: -ms-linear-gradient(0deg, rgb(166, 199, 255) 0%, rgb(192, 255, 255) 100%);
 			background: linear-gradient(90deg, rgb(166, 199, 255) 0%, rgb(192, 255, 255) 100%);
+
 			/* 侧边栏 */
-			.aside{
+			.aside {
 				position: absolute;
-				top:50%;
-				left:20px;
+				top: 50%;
+				left: 20px;
 				transform: translateY(-50%);
 			}
+
 			/* 搜索栏 */
-			.search{
+			.search {
 				position: absolute;
 				position: absolute;
-				top:50%;
-				right:20px;
+				top: 50%;
+				right: 20px;
 				transform: translateY(-50%);
 			}
+		}
+
+		/* loading动画 */
+		.loading {
+			display: flex;
+			width: 100%;
+			height: 500px;
+			justify-content: space-around;
+			align-items: flex-end;
+
+			.round {
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
+				background-color: #00a4ff;
+				animation: loading 1.5s linear infinite;
+			}
+
+			/* loading动画 */
+			@keyframes loading {
+
+				to,
+				from {
+					transform: translateY(0);
+				}
+
+				50% {
+					transform: translateY(-100px);
+				}
+			}
+
+			@mixin delay($time) {
+				animation-delay: $time;
+			}
+
+			.round:nth-of-type(4) {
+				background-color: skyblue;
+				@include delay(0.2s);
+			}
+
+			.round:nth-of-type(3) {
+				@include delay(0.4s);
+				background-color: red;
+			}
+
+			.round:nth-of-type(2) {
+				@include delay(0.6s);
+				background-color: aquamarine;
+			}
+
+			.round:nth-of-type(1) {
+				@include delay(0.8s);
+				background-color: darksalmon;
+			}
+
+
 		}
 	}
 </style>
