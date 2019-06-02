@@ -32,13 +32,25 @@ footer,
 var {
 	padding: 0;
 	margin: 0;
+}
+
+/*  从 html 元素继承 box-sizing */
+html {
 	box-sizing: border-box;
 }
 
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
 body {
-	font: 12px/1.2rem "Microsoft YaHei", tahoma, arial, sans-serif;
-	min-width: 320px;
 	position: relative;
+	font: 12px/1.5 "Microsoft YaHei", tahoma, arial, sans-serif;
+	min-width: 320px;
+	max-width: 750px;
+	margin: 0 auto;
 }
 
 form,
@@ -58,7 +70,7 @@ h2,
 h3,
 h4,
 h5 {
-	font: 12px/1.2rem "Microsoft YaHei", arial, tahoma;
+	font: 12px/1.5 "Microsoft YaHei", arial, tahoma;
 }
 
 a {
@@ -103,8 +115,8 @@ p {
 }
 
 .clearfix:after {
-	clear: both;
 	content: ".";
+	clear: both;
 	display: block;
 	font-size: 0;
 	height: 0;

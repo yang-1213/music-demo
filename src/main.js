@@ -8,7 +8,10 @@ import vueTap from 'v-ztap';
 Vue.use(vueTap);
 
 // 重置样式
-import '@/style/reset.css'
+import '@/common/css/reset.css';
+// import '@/common/css/mixin.less';
+// rem
+import "@/common/js/rem.js"
 
 // 引入fundebug
 import * as fundebug from "fundebug-javascript";

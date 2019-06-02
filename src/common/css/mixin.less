@@ -1,0 +1,36 @@
+// out: ./style.css, compress: true, sourceMap: false
+
+// out 填写生成路径，相对于当前less文件 
+// compress css压缩，true生成压缩代码 
+// sourceMap 生成 *.map 文件 true为生成
+/* 多行显示出现省略号 */
+.line-camp(@clamp: 2) {
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: @clamp;
+    -webkit-box-orient: vertical;
+}
+
+.font-style(@fontSize: 0.28rem, @color: #000, @lineHeight: 1.5, @textAlign: left) {
+    font-size: @fontSize;
+    color: @color;
+    line-height: @lineHeight;
+    text-align: @textAlign;
+}
+
+/* 两端对齐 */
+.justify(@width: 3rem) {
+    // margin: 10px 0;
+    width: @width;
+    // border: 1px solid red;
+    text-align: justify;
+    text-align-last: justify;
+
+    &::after {
+        content: '';
+        display: inline-block;
+        width: 100%;
+    }
+}
