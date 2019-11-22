@@ -12,7 +12,7 @@
     "fundebug-javascript": "^1.8.0",
     "fundebug-vue": "0.0.1",
     "v-ztap": "^1.1.6",
-    "vant": "^1.6.21",
+    "vant": "^2.2.14",
     "vue": "^2.6.10",
     "vue-router": "^3.0.6",
     "vuex": "^3.1.1"
